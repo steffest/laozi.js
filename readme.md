@@ -13,7 +13,7 @@ when running on IISNODE on a Windows server, there's a web.config file in the do
  
 ## Laozi Background
 Laozi is a super simple drop in API providing basic CRUD for "structured content".  
-Data Storage can be anything a there's a stong preference to use filebased storage for it's simplicity and zero-setup.  
+Data Storage can be anything but there's a stong preference to use filebased storage for it's simplicity and zero-setup.  
 "Structured content" defined a loose structure of an "article", for example
  - title
  - body
