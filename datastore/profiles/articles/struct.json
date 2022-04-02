@@ -1,0 +1,55 @@
+{
+  "fields": [
+    {"name"  : "id", "type": "int"},
+    {"name"  : "name", "type": "text"},
+    {"name"  : "author", "type": "text"},
+    {"name"  : "icon", "type": "enum", "values" : "amigatick,amiga500,beer,commodore,game,kickstart,monitor_thumbsup,news"},
+    {"name"  : "teaser", "type": "text", "editor": "html"},
+    {"name"  : "body", "type": "text", "editor": "html"},
+    {"name"  : "date", "type": "date"},
+    {"name"  : "attachments", "type": "file"},
+    {"name"  : "state", "type": "enum", "values" : "published,draft,parked"},
+    {"name"  : "publishfrom", "type": "date"},
+    {"name"  : "publishto", "type": "date"},
+    {"name"  : "tags", "type": "relation", "table" : "tags", "relation" : "id,uid"},
+    {"name"  : "category", "type": "relation", "table" : "categories", "relation" : "id,uid"}
+  ],
+  "categories": [
+    "news",
+    "projects",
+    "meetings",
+    "homepage",
+    "repairs",
+	"knowledgebase"
+  ],
+  "categoryFields" : {
+    "news":[
+      {"extention":true,"name":"archived","type":"enum","values": "no,yes"}
+    ],
+    "projects": [
+      {"extention":true,"name":"club","label":"is club project","type":"enum","values":"no,yes","global":true},
+      {"extention":true,"name":"drawer","type":"enum","values": "comms,game,art"},
+      {"extention":true,"name":"image","type":"image","iconBaseUrl": "/api/image/200x200/","uploadPath" : "/_img/articles/","addCategoryToUploadPath":true},
+      {"extention":true,"name":"imagewidth","type":"hidden","global":true},
+      {"extention":true,"name":"imageheight","type":"hidden","global":true},
+      {"extention":true,"name":"fitimage","type":"enum","values":"cover,contain","global":true},
+      {"extention":true,"name":"externalurl","label":"External URL","type":"text","global":true},
+      {"extention":true,"name":"externallabel","label":"External URL Label","type":"text","global":true}
+    ],
+    "repairs": [
+      {"extention":true,"name":"image","type":"image","iconBaseUrl": "/api/image/200x200/","uploadPath" : "/_img/articles/","addCategoryToUploadPath":true},
+      {"extention":true,"name":"imagewidth","type":"hidden","global":true},
+      {"extention":true,"name":"imageheight","type":"hidden","global":true},
+      {"extention":true,"name":"fitimage","type":"enum","values":"cover,contain","global":true},
+      {"extention":true,"name":"externalurl","label":"External URL","type":"text","global":true},
+      {"extention":true,"name":"contact","type":"text","global":true}
+    ],
+	"knowledgebase":[
+     {"extention":true,"name":"drawer","type":"enum","values": "hardware,tips-tricks"}
+    ]
+  },
+  "list" : "id,name",
+  "__editor" : "editors/articleeditor.html",
+  "useHistory" : 1,
+  "includeAll" : 0
+}

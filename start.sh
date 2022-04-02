@@ -1,0 +1,1 @@
+nodemon --ignore './datastore/' server.js
