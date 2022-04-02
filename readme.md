@@ -22,5 +22,5 @@ Data Storage can be anything a there's a stong preference to use filebased stora
  - author
  - slug
 
-Laozi then renders a the list/detail/edit screens and provides a REST bast API for retreiving this content in JSON format with basic filtering/ordering.  
+Laozi then renders a the list/detail/edit screens and provides a REST based API for retreiving this content in JSON format with basic filtering/ordering.  
 This is the node.js version. There's also a version in PHP, .NET and Classic ASP. (yes, it goes way back)
