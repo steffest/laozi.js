@@ -8,7 +8,7 @@ Node.js version of Laozi, the Super Simple Instant API
  - Vanilla JS
 
 ## Install and run
- -> `node server.js` 
+ -> `node server.js`  
 when running on IISNODE on a Windows server, there's a web.config file in the docs/iisnode folder
  
 ## Laozi Background
