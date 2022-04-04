@@ -81,24 +81,24 @@ var Image = function(api){
                 info.err = err;
                 next(info);
             }else{
-                var probe = require('probe-image-size');
-                var input = fs.createReadStream(fullFilePath);
-                probe(input).then(result => {
+                //var probe = require('probe-image-size');
+                //var input = fs.createReadStream(fullFilePath);
+                //probe(input).then(result => {
                     //console.log(result);
 
-                    input.destroy();
+                    //input.destroy();
 
-                    info.width = result.width;
-                    info.height = result.height;
+                    //info.width = result.width;
+                    //info.height = result.height;
                     info.file.size = stats.size;
                     info.file.created = Math.round(stats.ctimeMs);
                     info.file.modified = Math.round(stats.mtimeMs);
                     info.file.accessed = Math.round(stats.atimeMs);
-                    info.file.mime = result.mime;
+                    //info.file.mime = result.mime;
                     //info.stats = stats;
 
 
-                    var jpeg = fs.readFileSync(fullFilePath);
+                    /*var jpeg = fs.readFileSync(fullFilePath);
                     var data = jpeg.toString("binary");
                     var exifObj = piexif.load(data);
                     info.exif = {};
@@ -159,12 +159,14 @@ var Image = function(api){
                             //    info.exifTool = epInfo;
                             //    next(info);
                             //})
-                            next(info);
+
                         });
 
-                    });
+                    });*/
 
-                });
+                    next(info);
+
+                //});
             }
         });
     };

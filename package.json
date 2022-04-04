@@ -6,15 +6,5 @@
       "datastore/*"
     ]
   },
-  "dependencies": {
-    "dist-exiftool": "^10.53.0",
-    "exif": "^0.6.0",
-    "exifr": "^6.0.0",
-    "multiparty": "^4.2.1",
-    "node-exiftool": "^2.3.0",
-    "piexifjs": "^1.0.6",
-    "probe-image-size": "^5.0.0",
-    "xmp-js": "0.0.5",
-    "xmp-reader": "0.0.3"
-  }
+  "dependencies": {}
 }

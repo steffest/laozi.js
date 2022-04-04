@@ -94,18 +94,19 @@ var FileSystem = function(){
     };
 
     me.moveFile = function(oldPath, newPath, next){
-        //fs.rename(oldPath, newPath, function (err) {
-            //if (err) {
-                //if (err.code === 'EXDEV') {
+        fs.rename(oldPath, newPath, function (err) {
+            if (err) {
+                if (err.code === 'EXDEV') {
                     copy();
-                //} else {
+                } else {
                     fs.unlink(oldPath, next);
                     //next();
-                //}
-                //return;
-            //}
-            //next();
-        //});
+                }
+            }else{
+                next();
+            }
+        });
+
 
         function copy() {
             var readStream = fs.createReadStream(oldPath);

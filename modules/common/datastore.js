@@ -44,7 +44,7 @@ var DataStore = function () {
 
             if (files) {
                 files.forEach(function (file) {
-                    if (file.indexOf(".json") > 0) {
+                    if (file.indexOf(".json") > 0 && file !== "struct.json") {
                         targetCount++;
                         filesystem.readJson(path.join(pathName, file), function (content) {
                             
@@ -104,7 +104,7 @@ var DataStore = function () {
     };
 
     me.update = function (profile, id, form, next) {
-        var activeLanguages = [];
+        var activeLanguages = [""];
         var fileOut = [];
         if (config.multiLanguage) {
             form = form||{};
@@ -136,7 +136,7 @@ var DataStore = function () {
         function saveFiles() {
             activeLanguages.forEach(language => {
                 var folderPath = me.getProfilePath(profile, language, true);
-
+                
                 // TODO: backup
 
                 var filename = path.join(folderPath, id + ".json");
@@ -225,11 +225,11 @@ var DataStore = function () {
                 done();
             })
         });
-
     }
 
     me.getStructure = function (profile, next) {
-        var filename = path.join(me.getDataStorePath(), "structures", profile + ".json");
+        //var filename = path.join(me.getDataStorePath(), "structures", profile + ".json");
+        var filename = path.join(me.getProfilePath(profile),"struct.json");
         filesystem.readJson(filename, next);
     };
 
@@ -239,7 +239,7 @@ var DataStore = function () {
                 language = config.defaultLanguage;
             }
         }
-
+        
         var pathName = path.join(me.getDataStorePath(), config.profileDirectory, profile);
         if (language) pathName = path.join(pathName, language);
 
@@ -252,6 +252,7 @@ var DataStore = function () {
     me.getDataStorePath = function () {
         return path.join(__dirname, '../../', config.dataStoreDirectory);
     };
+    
 
     function isProfileMultiLanguage(profile) {
         return true;

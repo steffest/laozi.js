@@ -3,10 +3,10 @@ const path = require("path");
 var Config = {
     dataStoreDirectory: "datastore",
     profileDirectory: "profiles",
-    multiLanguage: true,
+    multiLanguage: false,
     languages: ["en","nl","benl","befr","lufr","fr","it","es","de","se","no","gr"],
     defaultLanguage : "en",
-    rootPath: path.join(__dirname,"../base")
+    rootPath: path.join(__dirname,"./docs")
 };
 
 Config.getHostConfig = function(host){

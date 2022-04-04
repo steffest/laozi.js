@@ -32,6 +32,7 @@ var API = function(){
 		}
 		
 		if (reqUrl.indexOf("/api/")===0) reqUrl = reqUrl.substr(4);
+		if (reqUrl.indexOf("/laozi/")===0) reqUrl = reqUrl.substr(6);
         var fullReqUrl = reqUrl;
         decodeURIComponent(fullReqUrl);
 
@@ -81,7 +82,7 @@ var API = function(){
         
         var handler = modules[module];
         var apiResult = {
-            description: "Steffest Instasnt API",
+            description: "Steffest Instant API",
             platform: apiPlatform,
             version: version,
             url: reqUrl,
@@ -94,7 +95,6 @@ var API = function(){
         //console.log(reqUrl);
 
         if (handler && handler.process){
-
             var process = function(){
                 handler.process(apiRequest,function(result,status,cookies){
                     apiResult.status = status || "ok";
@@ -104,13 +104,12 @@ var API = function(){
             };
 
             if (req.method === "POST"){
-
                 var contentType = req.headers["content-type"] || "";
 
 
                if (contentType.indexOf("multipart/form-data")>=0){
-                   var multiparty = require('multiparty');
-                   var form = new multiparty.Form();
+                   var multipart = require('./libs/multipart.js');
+                   var form = new multipart.Form();
                    form.parse(req, function(err, fields, files) {
                        apiRequest.form = fields;
                        apiRequest.files = files;
@@ -139,7 +138,7 @@ var API = function(){
             }
 
         }else{
-            apiResult.result = "unknown API method";
+            apiResult.result = "unknown API methods";
             apiResult.status = "nok";
             next(apiResult);
         }
